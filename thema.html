@@ -10,11 +10,19 @@
   <title>KRuniv</title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/navbars/">
-
+  <script type='text/javascript' src='http://code.jquery.com/jquery-1.8.3.js'></script>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
   <meta name="theme-color" content="#563d7c">
 </head>
+
+<style type="text/css">
+  body {
+    font-family: '나눔바른고딕';
+    font-size: 12pt;
+  }
+</style>
+
 <body>
 
   <nav class="navbar navbar-expand-md navbar-dark" style="padding:3px;background-color:#84a6d1;">
@@ -57,60 +65,81 @@
 
     <br>
     <div style="text-align: center;">
-    <div class="btn-group">
-      <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-        대분류
-      </button>
-      <div class="dropdown-menu">
-        인문계열
+      <div class="btn-group">
+        <button class="btn btn-secondary btn-lg dropdown-toggle" id="btn_lg" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          대분류
+        </button>
+        <div class="dropdown-menu" id="menu_lg">
+            <a class="dropdown-item" href="#">인문계열</a>
+            <a class="dropdown-item" href="#">사회계열</a>
+            <a class="dropdown-item" href="#">교육계열</a>
+        </div>
       </div>
-    </div>
+      <div class="btn-group">
+        <button class="btn btn-secondary btn-lg dropdown-toggle" id="btn_md" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          중분류
+        </button>
+        <div class="dropdown-menu" id="menu_md">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </div>
+      <div class="btn-group">
+        <button class="btn btn-secondary btn-lg dropdown-toggle" id="btn_sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          소분류
+        </button>
+        <div class="dropdown-menu" id="menu_sm">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </div>
+      <script type='text/javascript'>
+        $('#menu_lg a').click(function() {
+          $('#btn_lg').text($(this).text());
+        });
 
-    <div class="btn-group">
-      <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-        중분류
-      </button>
-      <div class="dropdown-menu">
-        어문계열
-      </div>
-    </div>
+        $('#menu_md a').click(function() {
+          $('#btn_md').text($(this).text());
+        });
 
-    <div class="btn-group">
-      <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-        소분류
-      </button>
-      <div class="dropdown-menu">
-        국어국문학과
-      </div>
+        $('#menu_sm a').click(function() {
+          $('#btn_sm').text($(this).text());
+        });
+      </script>
+
+
+      <button type="button" id="addDataSet">hello</button>
     </div>
-  </div>
 
   </main>
   <script>
-    new Chart(document.getElementById("canvas"), {
+    var ctx = document.getElementById('canvas');
+
+    var config = {
       type: 'line',
       data: {
-        labels: ['2011', '2012', '2013', '2014', '2015', '2016', '2017','2018','2019'],
+        labels: ['2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019'],
         datasets: [{
           label: '국어국문학과',
           data: [
-            7,	7.5,	5.8,	5.7,	5.6,	5.7,	5.4,	5.5,	6.1
+            7, 7.5, 5.8, 5.7, 5.6, 5.7, 5.4, 5.5, 6.1
           ],
           borderColor: "rgba(255, 201, 14, 1)",
           backgroundColor: "rgba(255, 201, 14, 0.5)",
           fill: false,
           lineTension: 0
-        },{
+        }, {
           label: '무용',
           data: [
-            4.1,	3.9,	4.3,	4.8,	5.6,	7.1,	8.3,	8.6,	8
+            4.1, 3.9, 4.3, 4.8, 5.6, 7.1, 8.3, 8.6, 8
           ],
           borderColor: "rgba(111, 111, 14, 1)",
           backgroundColor: "rgba(111, 111, 14, 0.5)",
           fill: false,
           lineTension: 0
-        }
-        ]
+        }]
       },
       options: {
         responsive: true,
@@ -148,7 +177,43 @@
           }]
         }
       }
-    });
+    };
+    //차트 그리기
+    var myChart = new Chart(ctx, config);
+
+
+    document.getElementById('addDataSet').onclick = function() {
+      var a = 5,
+        b = 3;
+      var color1 = Math.floor(Math.random() * 256);
+      var color2 = Math.floor(Math.random() * 256);
+      var color3 = Math.floor(Math.random() * 256);
+
+      if (b == 3 && a == 5) {
+        a = [3, 3, 3, 20, 3, 3, 3, 3, 3];
+      } else if (a == 2) {
+        a = [8, 1, 1, 1, 1, 1, 1, 1, 1]
+      }
+
+      var newDataset = {
+        label: 'new Dataset' + config.data.datasets.length,
+        borderColor: 'rgba(' + color1 + ', ' + color2 + ', ' + color3 + ', 1)',
+        backgroundColor: 'rgba(' + color1 + ', ' + color2 + ', ' + color3 + ', 1)',
+        data: a,
+        fill: false
+      }
+
+      // newDataset에 데이터 삽입
+      for (var i = 0; i < config.data.labels.length; i++) {
+        var num = Math.floor(Math.random() * 50);
+        newDataset.data.push(num);
+      }
+
+      // chart에 newDataset 푸쉬
+      config.data.datasets.push(newDataset);
+
+      myChart.update(); //차트 업데이트
+    }
   </script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script>
