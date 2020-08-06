@@ -70,9 +70,14 @@
           대분류
         </button>
         <div class="dropdown-menu" id="menu_lg">
-            <a class="dropdown-item" href="#">인문계열</a>
-            <a class="dropdown-item" href="#">사회계열</a>
-            <a class="dropdown-item" href="#">교육계열</a>
+          <a class="dropdown-item" num="1">총계</a>
+          <a class="dropdown-item" num="2">인문계열</a>
+          <a class="dropdown-item" num="3">사회계열</a>
+          <a class="dropdown-item" num="4">교육계열</a>
+          <a class="dropdown-item" num="5">공학계열</a>
+          <a class="dropdown-item" num="6">자연계열</a>
+          <a class="dropdown-item" num="7">의약계열</a>
+          <a class="dropdown-item" num="8">예체능계열</a>
         </div>
       </div>
       <div class="btn-group">
@@ -80,40 +85,300 @@
           중분류
         </button>
         <div class="dropdown-menu" id="menu_md">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </div>
-      <div class="btn-group">
-        <button class="btn btn-secondary btn-lg dropdown-toggle" id="btn_sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-          소분류
-        </button>
-        <div class="dropdown-menu" id="menu_sm">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
+          <div id="m1">
+          		<h4 class="dropdown-header">총계</h4>
+          			<a class="dropdown-item">총계</a>
+          </div>
+          <div id="m2">
+          			<div class="dropdown-divider"></div>
+          	<h4 class="dropdown-header">인문계열의 총계</h4>
+          	<a class="dropdown-item">인문계열의 총계</a>
+          			<div class="dropdown-divider"></div>
+          	<h4 class="dropdown-header">언어ㆍ문학</h4>
+          		<a class="dropdown-item">언어ㆍ문학의 총계</a>
+          		<a class="dropdown-item">언어학</a>
+          		<a class="dropdown-item">국어ㆍ국문학</a>
+          		<a class="dropdown-item">일본어ㆍ문학</a>
+          		<a class="dropdown-item">중국어ㆍ문학</a>
+          		<a class="dropdown-item">기타아시아어ㆍ문학</a>
+          		<a class="dropdown-item">영미어ㆍ문학</a>
+          		<a class="dropdown-item">독일어ㆍ문학</a>
+          		<a class="dropdown-item">러시아어ㆍ문학</a>
+          		<a class="dropdown-item">스페인어ㆍ문학</a>
+          		<a class="dropdown-item">프랑스어ㆍ문학</a>
+          		<a class="dropdown-item">기타유럽어ㆍ문학</a>
+          		<a class="dropdown-item">교양어ㆍ문학</a>
+          		<div class="dropdown-divider"></div>
+          	<h4 class="dropdown-header">인문과학</h4>
+          		<a class="dropdown-item">인문과학의 총계</a>
+          		<a class="dropdown-item">문헌정보학</a>
+          		<a class="dropdown-item">문화ㆍ민속ㆍ미술사학</a>
+          		<a class="dropdown-item">심리학</a>
+          		<a class="dropdown-item">역사ㆍ고고학</a>
+          		<a class="dropdown-item">종교학</a>
+          		<a class="dropdown-item">국제지역학</a>
+          		<a class="dropdown-item">철학ㆍ윤리학</a>
+          		<a class="dropdown-item">교양인문학</a>
+          </div>
+          <div id="m3">
+          			<div class="dropdown-divider"></div>
+          	<h4 class="dropdown-header">사회계열의 총계</h4>
+          	<a class="dropdown-item">사회계열의 총계</a>
+          			<div class="dropdown-divider"></div>
+          	<h4 class="dropdown-header">경영ㆍ경제</h4>
+          		<a class="dropdown-item">경영ㆍ경제의 총계</a>
+          		<a class="dropdown-item">경영학</a>
+          		<a class="dropdown-item">경제학</a>
+          		<a class="dropdown-item">관광학</a>
+          		<a class="dropdown-item">광고·홍보학</a>
+          		<a class="dropdown-item">금융ㆍ회계ㆍ세무학</a>
+          		<a class="dropdown-item">무역ㆍ유통학</a>
+          		<a class="dropdown-item">교양경상학</a>
+          		<div class="dropdown-divider"></div>
+          	<h4 class="dropdown-header">법률</h4>
+          		<a class="dropdown-item">법률의 총계</a>
+          		<a class="dropdown-item">법학</a>
+          		<div class="dropdown-divider"></div>
+          	<h4 class="dropdown-header">사회과학</h4>
+          		<a class="dropdown-item">사회과학의 총계</a>
+          		<a class="dropdown-item">가족ㆍ사회ㆍ복지학</a>
+          		<a class="dropdown-item">국제학</a>
+          		<a class="dropdown-item">도시ㆍ지역학</a>
+          		<a class="dropdown-item">사회학</a>
+          		<a class="dropdown-item">언론ㆍ방송ㆍ매체학</a>
+          		<a class="dropdown-item">정치외교학</a>
+          		<a class="dropdown-item">행정학</a>
+          		<a class="dropdown-item">교양사회과학</a>
+          </div>
+          <div id="m4">
+          			<div class="dropdown-divider"></div>
+          	<h4 class="dropdown-header">교육계열의 총계</h4>
+          	<a class="dropdown-item">교육계열의 총계</a>
+          			<div class="dropdown-divider"></div>
+          	<h4 class="dropdown-header">교육일반</h4>
+          		<a class="dropdown-item">교육일반의 총계</a>
+          		<a class="dropdown-item">교육학</a>
+          		<div class="dropdown-divider"></div>
+          	<h4 class="dropdown-header">유아교육</h4>
+          		<a class="dropdown-item">유아교육의 총계</a>
+          		<a class="dropdown-item">유아교육학</a>
+          		<div class="dropdown-divider"></div>
+          	<h4 class="dropdown-header">특수교육학</h4>
+          		<a class="dropdown-item">특수교육학의 총계</a>
+          		<a class="dropdown-item">특수교육</a>
+          		<div class="dropdown-divider"></div>
+          	<h4 class="dropdown-header">초등교육</h4>
+          		<a class="dropdown-item">초등교육의 총계</a>
+          		<a class="dropdown-item">초등교육학</a>
+          		<div class="dropdown-divider"></div>
+          	<h4 class="dropdown-header">중등교육</h4>
+          		<a class="dropdown-item">중등교육의 총계</a>
+          		<a class="dropdown-item">언어교육</a>
+          		<a class="dropdown-item">인문교육</a>
+          		<a class="dropdown-item">사회교육</a>
+          		<a class="dropdown-item">공학교육</a>
+          		<a class="dropdown-item">자연계교육</a>
+          		<a class="dropdown-item">예체능교육</a>
+          </div>
+          <div id="m5">
+          			<div class="dropdown-divider"></div>
+          	<h4 class="dropdown-header">공학계열의 총계</h4>
+          	<a class="dropdown-item">공학계열의 총계</a>
+          			<div class="dropdown-divider"></div>
+          	<h4 class="dropdown-header">건축</h4>
+          		<a class="dropdown-item">건축의 총계</a>
+          		<a class="dropdown-item">건축ㆍ설비공학</a>
+          		<a class="dropdown-item">건축학</a>
+          		<a class="dropdown-item">조경학</a>
+          		<div class="dropdown-divider"></div>
+          	<h4 class="dropdown-header">토목ㆍ도시</h4>
+          		<a class="dropdown-item">토목ㆍ도시의 총계</a>
+          		<a class="dropdown-item">토목공학</a>
+          		<a class="dropdown-item">도시공학</a>
+          		<div class="dropdown-divider"></div>
+          	<h4 class="dropdown-header">교통ㆍ운송</h4>
+          		<a class="dropdown-item">교통ㆍ운송의 총계</a>
+          		<a class="dropdown-item">지상교통공학</a>
+          		<a class="dropdown-item">항공학</a>
+          		<a class="dropdown-item">해양공학</a>
+          		<div class="dropdown-divider"></div>
+          	<h4 class="dropdown-header">기계ㆍ금속</h4>
+          		<a class="dropdown-item">기계ㆍ금속의 총계</a>
+          		<a class="dropdown-item">기계공학</a>
+          		<a class="dropdown-item">금속공학</a>
+          		<a class="dropdown-item">자동차공학</a>
+          		<div class="dropdown-divider"></div>
+          	<h4 class="dropdown-header">전기ㆍ전자</h4>
+          		<a class="dropdown-item">전기ㆍ전자의 총계</a>
+          		<a class="dropdown-item">전기공학</a>
+          		<a class="dropdown-item">전자공학</a>
+          		<a class="dropdown-item">제어계측공학</a>
+          		<div class="dropdown-divider"></div>
+          	<h4 class="dropdown-header">정밀ㆍ에너지</h4>
+          		<a class="dropdown-item">정밀ㆍ에너지의 총계</a>
+          		<a class="dropdown-item">광학공학</a>
+          		<a class="dropdown-item">에너지공학</a>
+          		<div class="dropdown-divider"></div>
+          	<h4 class="dropdown-header">소재ㆍ재료</h4>
+          		<a class="dropdown-item">소재ㆍ재료의 총계</a>
+          		<a class="dropdown-item">반도체ㆍ세라믹공학</a>
+          		<a class="dropdown-item">섬유공학</a>
+          		<a class="dropdown-item">신소재공학</a>
+          		<a class="dropdown-item">재료공학</a>
+          		<div class="dropdown-divider"></div>
+          	<h4 class="dropdown-header">컴퓨터ㆍ통신</h4>
+          		<a class="dropdown-item">컴퓨터ㆍ통신의 총계</a>
+          		<a class="dropdown-item">전산학ㆍ컴퓨터공학</a>
+          		<a class="dropdown-item">응용소프트웨어공학</a>
+          		<a class="dropdown-item">정보ㆍ통신공학</a>
+          		<div class="dropdown-divider"></div>
+          	<h4 class="dropdown-header">산업</h4>
+          		<a class="dropdown-item">산업의 총계</a>
+          		<a class="dropdown-item">산업공학</a>
+          		<div class="dropdown-divider"></div>
+          	<h4 class="dropdown-header">화공</h4>
+          		<a class="dropdown-item">화공의 총계</a>
+          		<a class="dropdown-item">화학공학</a>
+          		<div class="dropdown-divider"></div>
+          	<h4 class="dropdown-header">기타</h4>
+          		<a class="dropdown-item">기타의 총계</a>
+          		<a class="dropdown-item">기전공학</a>
+          		<a class="dropdown-item">응용공학</a>
+          		<a class="dropdown-item">교양공학</a>
+          </div>
+          <div id="m6">
+          			<div class="dropdown-divider"></div>
+          	<h4 class="dropdown-header">자연계열의 총계</h4>
+          	<a class="dropdown-item">자연계열의 총계</a>
+          			<div class="dropdown-divider"></div>
+          	<h4 class="dropdown-header">농림ㆍ수산</h4>
+          		<a class="dropdown-item">농림ㆍ수산의 총계</a>
+          		<a class="dropdown-item">농업학</a>
+          		<a class="dropdown-item">수산학</a>
+          		<a class="dropdown-item">산림ㆍ원예학</a>
+          		<div class="dropdown-divider"></div>
+          	<h4 class="dropdown-header">생물ㆍ화학ㆍ환경</h4>
+          		<a class="dropdown-item">생물ㆍ화학ㆍ환경의 총계</a>
+          		<a class="dropdown-item">생명과학</a>
+          		<a class="dropdown-item">생물학</a>
+          		<a class="dropdown-item">동물ㆍ수의학</a>
+          		<a class="dropdown-item">자원학</a>
+          		<a class="dropdown-item">화학</a>
+          		<a class="dropdown-item">환경학</a>
+          		<div class="dropdown-divider"></div>
+          	<h4 class="dropdown-header">생활과학</h4>
+          		<a class="dropdown-item">생활과학의 총계</a>
+          		<a class="dropdown-item">가정관리학</a>
+          		<a class="dropdown-item">식품영양학</a>
+          		<a class="dropdown-item">의류ㆍ의상학</a>
+          		<a class="dropdown-item">교양생활과학</a>
+          		<div class="dropdown-divider"></div>
+          	<h4 class="dropdown-header">수학ㆍ물리ㆍ천문ㆍ지리</h4>
+          		<a class="dropdown-item">수학ㆍ물리ㆍ천문ㆍ지리의 총계</a>
+          		<a class="dropdown-item">수학</a>
+          		<a class="dropdown-item">통계학</a>
+          		<a class="dropdown-item">물리ㆍ과학</a>
+          		<a class="dropdown-item">천문ㆍ기상학</a>
+          		<a class="dropdown-item">지구ㆍ지리학</a>
+          		<a class="dropdown-item">교양자연과학</a>
+          </div>
+          <div id="m7">
+          			<div class="dropdown-divider"></div>
+          	<h4 class="dropdown-header">의약계열의 총계</h4>
+          	<a class="dropdown-item">의약계열의 총계</a>
+          			<div class="dropdown-divider"></div>
+          	<h4 class="dropdown-header">의료</h4>
+          		<a class="dropdown-item">의료의 총계</a>
+          		<a class="dropdown-item">의학</a>
+          		<a class="dropdown-item">치의학</a>
+          		<a class="dropdown-item">한의학</a>
+          		<div class="dropdown-divider"></div>
+          	<h4 class="dropdown-header">간호</h4>
+          		<a class="dropdown-item">간호의 총계</a>
+          		<a class="dropdown-item">간호학</a>
+          		<div class="dropdown-divider"></div>
+          	<h4 class="dropdown-header">약학</h4>
+          		<a class="dropdown-item">약학의 총계</a>
+          		<a class="dropdown-item">약학</a>
+          		<div class="dropdown-divider"></div>
+          	<h4 class="dropdown-header">치료ㆍ보건</h4>
+          		<a class="dropdown-item">치료ㆍ보건의 총계</a>
+          		<a class="dropdown-item">보건학</a>
+          		<a class="dropdown-item">재활학</a>
+          		<a class="dropdown-item">의료공학</a>
+          </div>
+          <div id="m8">
+          			<div class="dropdown-divider"></div>
+          	<h4 class="dropdown-header">예체능계열의 총계</h4>
+          	<a class="dropdown-item">예체능계열의 총계</a>
+          			<div class="dropdown-divider"></div>
+          	<h4 class="dropdown-header">디자인</h4>
+          		<a class="dropdown-item">디자인의 총계</a>
+          		<a class="dropdown-item">디자인일반</a>
+          		<a class="dropdown-item">산업디자인</a>
+          		<a class="dropdown-item">시각디자인</a>
+          		<a class="dropdown-item">패션디자인</a>
+          		<a class="dropdown-item">기타디자인</a>
+          		<div class="dropdown-divider"></div>
+          	<h4 class="dropdown-header">응용예술</h4>
+          		<a class="dropdown-item">응용예술의 총계</a>
+          		<a class="dropdown-item">공예</a>
+          		<a class="dropdown-item">사진ㆍ만화</a>
+          		<a class="dropdown-item">영상ㆍ예술</a>
+          		<div class="dropdown-divider"></div>
+          	<h4 class="dropdown-header">무용ㆍ체육</h4>
+          		<a class="dropdown-item">무용ㆍ체육의 총계</a>
+          		<a class="dropdown-item">무용</a>
+          		<a class="dropdown-item">체육</a>
+          		<div class="dropdown-divider"></div>
+          	<h4 class="dropdown-header">미술ㆍ조형</h4>
+          		<a class="dropdown-item">미술ㆍ조형의 총계</a>
+          		<a class="dropdown-item">순수미술</a>
+          		<a class="dropdown-item">응용미술</a>
+          		<a class="dropdown-item">조형</a>
+          		<div class="dropdown-divider"></div>
+          	<h4 class="dropdown-header">연극ㆍ영화</h4>
+          		<a class="dropdown-item">연극ㆍ영화의 총계</a>
+          		<a class="dropdown-item">연극ㆍ영화</a>
+          		<div class="dropdown-divider"></div>
+          	<h4 class="dropdown-header">음악</h4>
+          		<a class="dropdown-item">음악의 총계</a>
+          		<a class="dropdown-item">음악학</a>
+          		<a class="dropdown-item">국악</a>
+          		<a class="dropdown-item">기악</a>
+          		<a class="dropdown-item">성악</a>
+          		<a class="dropdown-item">작곡</a>
+          		<a class="dropdown-item">기타음악</a>
+          </div></div>
         </div>
       </div>
       <script type='text/javascript'>
         $('#menu_lg a').click(function() {
           $('#btn_lg').text($(this).text());
+          if ($(this).attr('num')=="1")
+          {
+            $("#m1").show();
+            $("#m2").hide();
+          }
+          else if ($(this).attr('num')=="2") {
+            $("#m1").hide();
+            $("#m2").show();
+          }
+
         });
 
         $('#menu_md a').click(function() {
           $('#btn_md').text($(this).text());
         });
-
-        $('#menu_sm a').click(function() {
-          $('#btn_sm').text($(this).text());
-        });
       </script>
 
 
       <button type="button" id="addDataSet">hello</button>
+
     </div>
 
   </main>
+
   <script>
     var ctx = document.getElementById('canvas');
 
