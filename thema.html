@@ -361,9 +361,6 @@
 </div></div>
         </div>
       </div>
-
-      <button type="button" id="addDataSet">hello</button>
-
     </div>
 
   </main>
@@ -464,13 +461,23 @@
         labels: ['2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019'],
       },
       options: {
-        responsive: true,
         title: {
           display: false,
           text: '경쟁률 그래프'
         },
+        title: {
+          display: false,
+          text: '경쟁률 그래프'
+        },
+        tooltips: {
+          mode: 'index',
+          intersect: false,
+        },
+        hover: {
+          mode: 'nearest',
+          intersect: true
+        },
         scales: {
-      
           yAxes: [{
             display: true,
             ticks: {
