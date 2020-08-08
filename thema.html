@@ -462,7 +462,6 @@
       type: 'line',
       data: {
         labels: ['2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019'],
-        datasets: []
       },
       options: {
         responsive: true,
@@ -470,28 +469,15 @@
           display: false,
           text: '경쟁률 그래프'
         },
-        tooltips: {
-          mode: 'index',
-          intersect: false,
-        },
-        hover: {
-          mode: 'nearest',
-          intersect: true
-        },
         scales: {
-          xAxes: [{
-            display: true,
-            scaleLabel: {
-              display: true,
-              fontSize: 20,
-              labelString: '해당년도'
-            }
-          }],
+      
           yAxes: [{
             display: true,
             ticks: {
-              min: 0,
-              stepSize: 3
+              scaleOverride : true,
+              scaleSteps : 10,
+              scaleStepWidth : 50,
+              scaleStartValue : 0
             },
             scaleLabel: {
               display: true,
@@ -519,7 +505,7 @@
       var color3 = Math.floor(Math.random() * 256);
 
       var newDataset = {
-        label: cname + config.data.datasets.length,
+        label: cname,
         borderColor: 'rgba(' + color1 + ', ' + color2 + ', ' + color3 + ', 1)',
         backgroundColor: 'rgba(' + color1 + ', ' + color2 + ', ' + color3 + ', 1)',
         data: cdata,
@@ -531,6 +517,8 @@
         var num = Math.floor(Math.random() * 50);
         newDataset.data.push(num);
       }
+
+
 
       // chart에 newDataset 푸쉬
       config.data.datasets.push(newDataset);
