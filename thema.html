@@ -481,10 +481,7 @@
           yAxes: [{
             display: true,
             ticks: {
-              scaleOverride : true,
-              scaleSteps : 10,
-              scaleStepWidth : 50,
-              scaleStartValue : 0
+              min:0
             },
             scaleLabel: {
               display: true,
@@ -518,13 +515,6 @@
         data: cdata,
         fill: false
       }
-
-      // newDataset에 데이터 삽입
-      for (var i = 0; i < config.data.labels.length; i++) {
-        var num = Math.floor(Math.random() * 50);
-        newDataset.data.push(num);
-      }
-
 
 
       // chart에 newDataset 푸쉬
