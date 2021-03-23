@@ -4,9 +4,6 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-  <meta name="generator" content="Jekyll v4.0.1">
   <title>KRuniv</title>
 
   <script type='text/javascript' src='http://code.jquery.com/jquery-1.8.3.js'></script>
@@ -18,15 +15,53 @@
   body {
     font-family: '나눔바른고딕';
     font-size: 12pt;
+    padding: 0px;
+    margin: 0px;
   }
+  nav{
+    height: 8vmin;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo{
+    font-size: 5vmin;
+    margin: 1vmin;
+    color:white;
+    text-decoration: none;
+  }
+  .item{
+    margin: 2vmin;
+    font-size: 2.5vmin;
+    text-decoration: none;
+    color:white;
+  }
+  .itembox{
+    display: flex;
+    justify-content: space-between;
+  }
+  .selectbox{
+    display: flex;
+    justify-content: center;
+  }
+  .active{
 
-  .nav {
-    background-color: #012967;
-    color: white;
-    font-size: 20pt;
-    line-height: 50px;
-    position: fixed;
-    width: 100%;
+  }
+  li{
+    list-style-type: none;
+  }
+  main{
+    padding-right: 20%;
+    padding-left: 20%;
+  }
+  select{
+    margin: 2%;
+    border-radius: 5%;
+    font-size: 2vmin;
+    width: 20%;
+  }
+  blist{
+
   }
 </style>
 
@@ -41,46 +76,47 @@
     $("#m7").hide();
     $("#m8").hide();
   </script>
-  <nav class="navbar navbar-expand-md navbar-dark" style="padding:1px;background-color:#012967;font-size:13pt;">
-    <a class="navbar-brand" href="#" style="padding:5px;font-size:20pt;margin-left:5px;margin-top:4px;">KRuniv</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarsExample04">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">종합대학 경쟁률<span class="sr-only">(current)</span></a>
+  <nav style="background-color:#012967;">
+    <a class="logo" href="#">KRuniv</a>
+      <ul class="itembox">
+        <li >
+          <a class="item" href="#">종합대학 경쟁률</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">전문대학 경쟁률</a>
+        <li >
+          <a class="item" href="#">전문대학 경쟁률</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">종합대학 남녀성비</a>
+        <li>
+          <a class="item" href="#">종합대학 남녀성비</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">전문대학 남녀성비</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-          <div class="dropdown-menu" aria-labelledby="dropdown04">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
+        <li>
+          <a class="item" href="#">전문대학 남녀성비</a>
         </li>
       </ul>
     </div>
   </nav>
 
-  <main role="main" class="container" style="padding:20px">
+  <main role="main">
     <h3 style="text-align: center; color:#012967;">종합대학 경쟁률 그래프</h3>
-    <div style="width:100%;">
-      <canvas id="canvas"></canvas>
-    </div>
+    <canvas id="canvas" style="min-width:200px;"></canvas>
 
     <br>
-    <div style="text-align: center;">
+    <div class="selectbox">
+      <select name="대분류" value="대분류">
+        <option value="인문계열">인문계열의</option>
+        <option value="사회계열">사회계열의</option>
+        <option value="교육계열">교육계열의</option>
+      </select>
+      <select name="중분류">
+        <option value="언어 문학">언어 문학</option>
+        <option value="인문과학">인문과학의</option>
+      </select>
+      <select name="소분류">
+        <option value="국어ㆍ국문학">국어ㆍ국문학</option>
+        <option value="국어 국무">영어영문학</option>
+        <option value="국문">몰라</option>
+      </select>
+  </div>
+    <!--<div style="text-align: center;">
       <div class="btn-group">
         <button class="btn btn-secondary btn-lg dropdown-toggle" id="btn_lg" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="background-color:#012967;font-size:18pt;">
           대분류
@@ -369,7 +405,7 @@
         </div>
       </div>
     </div>
-    </div>
+  </div>-->
   </main>
 
   <script type='text/javascript'>
