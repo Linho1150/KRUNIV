@@ -1,0 +1,14 @@
+.itembox{
+ display: none;
+}
+.itembox_mid{
+  display: none;
+}
+.itembox_bottom{
+  display: flex;
+}
+
+main{
+  padding-right: 5%;
+  padding-left: 5%;
+}

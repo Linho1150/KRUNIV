@@ -1,0 +1,59 @@
+  body {
+    font-family: '나눔바른고딕';
+    font-size: 12pt;
+    padding: 0px;
+    margin: 0px;
+  }
+  nav{
+    height: 8vmin;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo{
+    font-size: 5vmin;
+    margin: 1vmin;
+    color:white;
+    text-decoration: none;
+  }
+  .item{
+    margin: 2vmin;
+    font-size: 2.5vmin;
+    text-decoration: none;
+    color:white;
+  }
+  .itembox{
+    display: none;
+    justify-content: space-between;
+  }
+  .itembox_mid{
+    display: none;
+    justify-content: space-between;
+  }
+  .itembox_bottom{
+    display: flex;
+    justify-content: space-between;
+  }
+  .selectbox{
+    display: flex;
+    justify-content: center;
+  }
+  .active{
+
+  }
+  li{
+    list-style-type: none;
+  }
+  main{
+    padding-right: 1%;
+    padding-left: 1%;
+  }
+  select{
+    margin: 2%;
+    border-radius: 5%;
+    font-size: 2vmin;
+    width: 20%;
+  }
+  blist{
+
+  }

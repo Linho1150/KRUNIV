@@ -1,0 +1,4 @@
+@import url("common.css");
+@import url("480.css") (min-width:480px);
+@import url("768.css") (min-width:768px);
+@import url("1200.css") (min-width:1200px);

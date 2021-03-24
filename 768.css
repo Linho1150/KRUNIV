@@ -1,0 +1,13 @@
+.itembox{
+ display: none;
+}
+.itembox_mid{
+  display: flex;
+}
+.itembox_bottom{
+  display: none;
+}
+main{
+  padding-right: 10%;
+  padding-left: 10%;
+}
