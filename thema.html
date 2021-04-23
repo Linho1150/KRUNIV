@@ -58,7 +58,7 @@
   </nav>
 
   <main role="main">
-    <h3 style="text-align: center; color:#012967;">종합대학 경쟁률 그래프</h3>
+    <h3 style="text-align: center; color:#595857;">종합대학 경쟁률 그래프</h3>
     <canvas id="canvas" style="min-width:200px;"></canvas>
 
     <br>
@@ -525,6 +525,97 @@
   <script>window.jQuery || document.write('<script src="js/vendor/jquery.slim.min.js"><\/script>')</script>
   <script src="js/bootstrap.bundle.min.js"></script>
 
+  <script>
+    var jsonArray;
+
+    function printJson(target){
+      const obj = JSON.parse(target);
+      jsonArray=obj;
+    }
+
+    function loadJSON(callback) {   
+      var xobj = new XMLHttpRequest();
+          xobj.overrideMimeType("application/json");
+      xobj.open('GET', 'univ_total.json', true);
+      xobj.onreadystatechange = function () {
+            if (xobj.readyState == 4 && xobj.status == "200") {
+              callback(xobj.responseText);
+            }
+      };
+      xobj.send(null);  
+    }
+    loadJSON(printJson);
+    
+    
+    setTimeout(function() {
+      var rstLarge = [];
+      var rstMedium = [];
+      var rstSmall = [];
+      for(tmp in jsonArray){
+        var tmp1=jsonArray[tmp].large_category;
+        var tmp2=jsonArray[tmp].medium_category;
+        var tmp3=jsonArray[tmp].small_category;
+        if(tmp==0 || tmp==1){
+          continue;
+        }
+        if(rstLarge.indexOf(tmp1)==-1){
+          rstLarge.push(tmp1);
+        }
+        console.log(rstLarge.indexOf(tmp1));
+        if(rstMedium.indexOf(tmp2)==-1){
+          var arrTmp = new Array();
+          arrTmp.push(tmp2);
+          rstMedium.push(arrTmp);
+        }
+        else{
+          rstMedium[tmp].splice(rstLarge.indexOf(tmp1),0,tmp2);
+        }
+        if(rstSmall.indexOf(tmp3)==-1){
+          var arrTmp = new Array();
+          arrTmp.push(tmp3);
+          rstSmall.push(arrTmp);
+        }
+        else{
+          rstSmall[tmp].splice(rstSmall.indexOf(tmp3),0,tmp3);
+        }
+      }
+      rstMedium[1].splice(2,0,"aa");
+      console.log(rstMedium);
+      //---------------------------------------------------
+      /*var arrLarge=[0];
+      var arrMedium=[0];
+      var arrSmall=[0];
+      for(tmp in jsonArray){
+        var tmp1=jsonArray[tmp].large_category;
+        var tmp2=jsonArray[tmp].medium_category;
+        var tmp3=jsonArray[tmp].small_category;
+        //console.log(arrLarge.indexOf(tmp1));
+        if(tmp==0 || tmp==1){
+          continue;
+        }
+        if(arrLarge.indexOf(tmp1)==-1){
+          arrLarge.push(tmp1);
+        }
+        if(arrMedium.indexOf(tmp2)==-1){
+          arrMedium.push(tmp2);
+        }
+        if(arrSmall.indexOf(tmp3)==-1){
+          arrSmall.push(tmp3);
+        }
+      }
+      delete arrLarge[0];
+      delete arrMedium[0];
+      delete arrSmall[0];
+
+      //var arrLarge = [setLarge];
+      /*console.log(arrLarge);
+      console.log(arrMedium);
+      console.log(arrSmall);*/
+    }, 1000);
+    
+    
+    //json file load : https://codepen.io/KryptoniteDove/post/load-json-file-locally-using-pure-javascript
+  </script>
 </body>
 
 </html>
