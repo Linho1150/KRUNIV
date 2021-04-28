@@ -48,9 +48,9 @@
 
     <br>
     <div id="selectbox">
-      <select id="sltLarge"></select>
-      <select id="sltMedium"></select>
-      <select id="sltSmall"></select>
+      <select id="sltLarge" onchange="clickLarge"></select>
+      <select id="sltMedium" onchange="clickMedium"></select>
+      <select id="sltSmall" onchange="clickSmall"></select>
     </div>
   </main>
 
@@ -204,22 +204,31 @@
 
       var datasetValue=rstRate[cntLarge.selectedIndex][cntMedium.selectedIndex][cntSmall.selectedIndex];
       var datasetName=rstSmall[cntLarge.selectedIndex][cntMedium.selectedIndex][cntSmall.selectedIndex];
-      
-      var color1 = Math.floor(Math.random() * 256);
-      var color2 = Math.floor(Math.random() * 256);
-      var color3 = Math.floor(Math.random() * 256);
 
-      var newDataset = {
-        label: datasetName,
-        borderColor: 'rgba(' + color1 + ', ' + color2 + ', ' + color3 + ', 1)',
-        backgroundColor: 'rgba(' + color1 + ', ' + color2 + ', ' + color3 + ', 1)',
-        data: datasetValue,
-        fill: false
+      var chartDataset=config.data.datasets;
+      var chartDatasetIndex=chartDataset.findIndex(chartDataset => chartDataset.label === datasetName);
+
+      if(chartDatasetIndex==-1){
+        var color1 = Math.floor(Math.random() * 256);
+        var color2 = Math.floor(Math.random() * 256);
+        var color3 = Math.floor(Math.random() * 256);
+
+        var newDataset = {
+          label: datasetName,
+          borderColor: 'rgba(' + color1 + ', ' + color2 + ', ' + color3 + ', 1)',
+          backgroundColor: 'rgba(' + color1 + ', ' + color2 + ', ' + color3 + ', 1)',
+          data: datasetValue,
+          fill: false
+        }
+        // chart에 newDataset 푸쉬
+        chartDataset.push(newDataset);
       }
-
-      // chart에 newDataset 푸쉬
-      config.data.datasets.push(newDataset);
+      else{
+       delete chartDataset[chartDatasetIndex];
+       chartDataset.filter(Boolean);
+      }
       myChart.update(); //차트 업데이트
+
     };
 
     function getItem(sltName,sltArr){
