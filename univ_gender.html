@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1, user-scalable=yes,initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="./thema.css" />
+  <title>KRuniv</title>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
+</head>
+
+<body style="background:#F2ECE9;">
+  <nav style="background-color:#A6A3A1;">
+    <style>
+      .itembox{
+        display: flex;
+      }
+    </style>
+    <a class="logo" href="#">KRuniv</a>
+    <ul class="itembox">
+        <li >
+          <a class="item" href="#">종합대학 경쟁률</a>
+        </li>
+        <li >
+          <a class="item" href="#">전문대학 경쟁률</a>
+        </li>
+        <li>
+          <a class="item" href="#">종합대학 남녀성비</a>
+        </li>
+        <li>
+          <a class="item" href="#">전문대학 남녀성비</a>
+        </li>
+    </ul>
+    <!--<select class="itembox_mid">
+          <option value="인문계열">종합대학 경쟁률</option>
+          <option value="인문계열">전문대학 경쟁률</option>
+          <option value="인문계열">종합대학 남녀성비</option>
+          <option value="인문계열">전문대학 남녀성비</option>
+    </select>-->
+    </div>
+  </nav>
+
+  <main role="main">
+    <h3 style="text-align: center; color:#595857;">종합대학 경쟁률 그래프</h3>
+    <canvas id="canvas" style="min-width:200px;"></canvas>
+
+    <br>
+    <div id="selectbox">
+      <select id="sltLarge" onchange="clickLarge"></select>
+      <select id="sltMedium" onchange="clickMedium"></select>
+      <select id="sltSmall" onchange="clickSmall"></select>
+    </div>
+  </main>
+
+  <script type='text/javascript'>
+
+    // 초기 그래프 설정 =========================================================
+    var ctx = document.getElementById('canvas');
+    var config = {
+      type: 'line',
+      data: {
+        labels: ['2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019'],
+      },
+      options: {
+        title: {
+          display: false,
+          text: '경쟁률 그래프'
+        },
+        tooltips: {
+          mode: 'index',
+          intersect: false,
+        },
+        hover: {
+          mode: 'nearest',
+          intersect: true
+        },
+        scales: {
+          yAxes: [{
+            display: true,
+            ticks: {
+              min: 0
+            },
+            scaleLabel: {
+              display: true,
+              labelString: '경쟁률'
+            }
+          }]
+        }
+      }
+    };
+    //차트 그리기
+    var myChart = new Chart(ctx, config);
+  </script>
+
+  <script>
+    var jsonArray;
+    var rstLarge = [];
+    var rstMedium = [];
+    var rstSmall = [];
+    var rstRate = [];
+
+    //rstLarge = 대분류
+    //rstMedium = 중분류
+    //rstSmall = 소분류
+    //대중소 기준으로 같은 index에 같은 값이 들어있음.
+
+    loadJSON(printJson);
+
+    function loadJSON(callback) {   
+      var xobj = new XMLHttpRequest();
+          xobj.overrideMimeType("application/json");
+      xobj.open('GET', 'univ_gender.json', true);
+      xobj.onreadystatechange = function () {
+            if (xobj.readyState == 4 && xobj.status == "200") {
+              callback(xobj.responseText);
+            }
+      };
+      xobj.send(null);  
+    }
+    function printJson(target){
+      const obj = JSON.parse(target);
+      jsonArray=obj;
+      setOption();
+    }
+  
+    function setOption() {
+      for(tmp in jsonArray){
+        var strLarge=jsonArray[tmp].large_category;
+        var strMedium=jsonArray[tmp].medium_category;
+        var strSmall=jsonArray[tmp].small_category;
+        if(tmp==0){
+          continue;
+        }
+        //대분류 설정 ----------------------------------------------------
+        if(rstLarge.indexOf(strLarge)==-1){
+          rstLarge.push(strLarge);
+        }
+        //중분류 설정 ----------------------------------------------------
+        var idxLarge=rstLarge.indexOf(strLarge);
+        if(!rstMedium[idxLarge])
+        {
+          rstMedium[idxLarge] = new Array();
+          rstSmall[idxLarge] = new Array();
+          rstRate[idxLarge] = new Array();
+          rstMedium[idxLarge].push(strMedium);
+        }
+        else
+        {
+          if(rstMedium[idxLarge].indexOf(strMedium)==-1)
+          {
+            rstMedium[idxLarge].push(strMedium);
+          }
+        }
+        //소분류 설정 ----------------------------------------------------
+        var idxMedium=rstMedium[idxLarge].indexOf(strMedium);
+        if(!rstSmall[idxLarge][idxMedium])
+        {
+            rstSmall[idxLarge][idxMedium] = new Array();
+            rstRate[idxLarge][idxMedium] = new Array();
+
+            rstSmall[idxLarge][idxMedium].push(strSmall);
+        }
+        else
+        {
+          if(rstSmall[idxLarge][idxMedium].indexOf(strSmall)==-1)
+          {
+            rstSmall[idxLarge][idxMedium].push(strSmall);
+          }
+        }
+        //경쟁률 설정 ----------------------------------------------------
+        var rateValue=Object.values(jsonArray[tmp]).slice(0,-3);
+        var idxSmall=rstSmall[idxLarge][idxMedium].indexOf(strSmall);
+        rstRate[idxLarge][idxMedium][idxSmall] = new Array();
+        rstRate[idxLarge][idxMedium][idxSmall]=rateValue;
+      }
+      getItem("sltLarge",rstLarge);
+    }
+
+    document.getElementById("sltLarge").addEventListener('click', clickLarge);
+    document.getElementById("sltMedium").addEventListener('click', clickMedium);
+    document.getElementById("sltSmall").addEventListener('click', clickSmall);
+
+    function clickLarge(){
+      var cntLarge = document.getElementById('sltLarge');
+      var cntMedium = document.getElementById('sltMedium');
+      cntMedium.innerHTML="";
+      getItem('sltMedium',rstMedium[cntLarge.selectedIndex]);
+    };
+
+    function clickMedium(){
+      var cntLarge = document.getElementById('sltLarge');
+      var cntMedium = document.getElementById('sltMedium');
+      var cntSmall = document.getElementById('sltSmall');
+      cntSmall.innerHTML="";
+      getItem('sltSmall',rstSmall[cntLarge.selectedIndex][cntMedium.selectedIndex]);
+    };
+
+    function clickSmall(){
+      var cntLarge = document.getElementById('sltLarge');
+      var cntMedium = document.getElementById('sltMedium');
+      var cntSmall = document.getElementById('sltSmall');
+
+      var datasetValue=rstRate[cntLarge.selectedIndex][cntMedium.selectedIndex][cntSmall.selectedIndex];
+      var datasetName=rstLarge[cntLarge.selectedIndex]+"/"+rstMedium[cntLarge.selectedIndex][cntMedium.selectedIndex]+"/"+rstSmall[cntLarge.selectedIndex][cntMedium.selectedIndex][cntSmall.selectedIndex];
+
+      var chartDataset=config.data.datasets;
+      var chartDatasetIndex=chartDataset.findIndex(chartDataset => chartDataset.label === datasetName);
+      var sameValue=false;
+      try{  //총합이 여러개가 생기면 이름이 같아서 다른 총합이 사라짐.
+        if(chartDataset[chartDatasetIndex].data[0] == datasetValue[0] && chartDataset[chartDatasetIndex].data[1] == datasetValue[1])
+        {
+          sameValue=true;
+        }
+      }
+      catch{sameValue=false;}
+
+      if(chartDatasetIndex==-1 || sameValue==false){
+        var color1 = Math.floor(Math.random() * 256);
+        var color2 = Math.floor(Math.random() * 256);
+        var color3 = Math.floor(Math.random() * 256);
+
+        var newDataset = {
+          label: datasetName,
+          borderColor: 'rgba(' + color1 + ', ' + color2 + ', ' + color3 + ', 1)',
+          backgroundColor: 'rgba(' + color1 + ', ' + color2 + ', ' + color3 + ', 1)',
+          data: datasetValue,
+          fill: false
+        }
+        // chart에 newDataset 푸쉬
+        chartDataset.push(newDataset);
+      }
+      else{
+       config.data.datasets.splice(chartDatasetIndex, 1);
+      }
+      myChart.update(); //차트 업데이트
+
+    };
+
+    function getItem(sltName,sltArr){
+      var select = document.getElementById(sltName); 
+      for(var tmp = 0; tmp < sltArr.length; tmp++) 
+      {
+          var opt = sltArr[tmp];
+          var el = document.createElement("option");
+          el.textContent=opt;
+          el.value=opt;
+          select.appendChild(el);
+      }
+    }
+
+    //json file load : https://codepen.io/KryptoniteDove/post/load-json-file-locally-using-pure-javascript
+  </script>
+</body>
+
+</html>
