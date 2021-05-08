@@ -33,17 +33,11 @@
           <a class="item" href="#">전문대학 남녀성비</a>
         </li>
     </ul>
-    <!--<select class="itembox_mid">
-          <option value="인문계열">종합대학 경쟁률</option>
-          <option value="인문계열">전문대학 경쟁률</option>
-          <option value="인문계열">종합대학 남녀성비</option>
-          <option value="인문계열">전문대학 남녀성비</option>
-    </select>-->
     </div>
   </nav>
 
   <main role="main">
-    <h3 style="text-align: center; color:#595857;">종합대학 경쟁률 그래프</h3>
+    <h3 style="text-align: center; color:#595857;">종합대학 성비 그래프</h3>
     <canvas id="canvas" style="min-width:200px;"></canvas>
 
     <br>
@@ -59,14 +53,15 @@
     // 초기 그래프 설정 =========================================================
     var ctx = document.getElementById('canvas');
     var config = {
-      type: 'line',
+      type: 'bar',
       data: {
         labels: ['2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019'],
       },
       options: {
+        responsive:true,
         title: {
           display: false,
-          text: '경쟁률 그래프'
+          text: '성별 그래프'
         },
         tooltips: {
           mode: 'index',
@@ -170,9 +165,10 @@
           }
         }
         //경쟁률 설정 ----------------------------------------------------
-        var rateValue=Object.values(jsonArray[tmp]).slice(0,-3);
+        var rateValue=Object.values(jsonArray[tmp]).slice(3);
+
         var idxSmall=rstSmall[idxLarge][idxMedium].indexOf(strSmall);
-        rstRate[idxLarge][idxMedium][idxSmall] = new Array();
+        rstRate[idxLarge][idxMedium][idxSmall]=new Array();
         rstRate[idxLarge][idxMedium][idxSmall]=rateValue;
       }
       getItem("sltLarge",rstLarge);
@@ -206,34 +202,40 @@
       var datasetName=rstLarge[cntLarge.selectedIndex]+"/"+rstMedium[cntLarge.selectedIndex][cntMedium.selectedIndex]+"/"+rstSmall[cntLarge.selectedIndex][cntMedium.selectedIndex][cntSmall.selectedIndex];
 
       var chartDataset=config.data.datasets;
-      var chartDatasetIndex=chartDataset.findIndex(chartDataset => chartDataset.label === datasetName);
-      var sameValue=false;
-      try{  //총합이 여러개가 생기면 이름이 같아서 다른 총합이 사라짐.
-        if(chartDataset[chartDatasetIndex].data[0] == datasetValue[0] && chartDataset[chartDatasetIndex].data[1] == datasetValue[1])
-        {
-          sameValue=true;
+      myChart.clear();
+      config.data.datasets.pop();
+      config.data.datasets.pop();
+        var maleData = new Array();
+        var femaleData = new Array();
+        for(tmp in datasetValue){
+          if(tmp%2==0){
+            maleData.push(datasetValue[tmp]);
+          }
+          else{
+            femaleData.push(datasetValue[tmp]);
+          }
         }
-      }
-      catch{sameValue=false;}
 
-      if(chartDatasetIndex==-1 || sameValue==false){
-        var color1 = Math.floor(Math.random() * 256);
-        var color2 = Math.floor(Math.random() * 256);
-        var color3 = Math.floor(Math.random() * 256);
-
-        var newDataset = {
-          label: datasetName,
-          borderColor: 'rgba(' + color1 + ', ' + color2 + ', ' + color3 + ', 1)',
-          backgroundColor: 'rgba(' + color1 + ', ' + color2 + ', ' + color3 + ', 1)',
-          data: datasetValue,
+        var maleDataset = {
+          label: datasetName+"/남성",
+          borderColor: 'rgba(0,167,235,1)',
+          backgroundColor: 'rgba(0,167,235,0.6)',
+          data: maleData,
           fill: false
         }
         // chart에 newDataset 푸쉬
-        chartDataset.push(newDataset);
-      }
-      else{
-       config.data.datasets.splice(chartDatasetIndex, 1);
-      }
+        chartDataset.push(maleDataset);
+
+        var femaleDataset = {
+          label: datasetName+"/여성",
+          borderColor: 'rgba(234,88,135,1)',
+          backgroundColor: 'rgba(234,88,135,0.6)',
+          data: femaleData,
+          fill: false
+        }
+        // chart에 newDataset 푸쉬
+        chartDataset.push(femaleDataset);
+      
       myChart.update(); //차트 업데이트
 
     };
