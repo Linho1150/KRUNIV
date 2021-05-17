@@ -12,47 +12,39 @@
 </head>
 
 <body style="background:#F2ECE9;">
-  <nav style="background-color:#A6A3A1;">
-    <style>
-      .itembox{
-        display: flex;
-      }
-    </style>
-    <a class="logo" href="#">KRuniv</a>
-    <ul class="itembox">
-        <li >
-          <a class="item" href="#">종합대학 경쟁률</a>
-        </li>
-        <li >
-          <a class="item" href="#">전문대학 경쟁률</a>
-        </li>
-        <li>
-          <a class="item" href="#">종합대학 남녀성비</a>
-        </li>
-        <li>
-          <a class="item" href="#">전문대학 남녀성비</a>
-        </li>
-    </ul>
-    <!--<select class="itembox_mid">
-          <option value="인문계열">종합대학 경쟁률</option>
-          <option value="인문계열">전문대학 경쟁률</option>
-          <option value="인문계열">종합대학 남녀성비</option>
-          <option value="인문계열">전문대학 남녀성비</option>
-    </select>-->
-    </div>
-  </nav>
-
   <main role="main">
     <h3 style="text-align: center; color:#595857;">종합대학 경쟁률 그래프</h3>
-    <canvas id="canvas" style="min-width:200px;"></canvas>
+    <canvas id="canvas"></canvas>
 
     <br>
     <div id="selectbox">
       <select id="sltLarge" onchange="clickLarge"></select>
-      <select id="sltMedium" onchange="clickMedium"></select>
+      <select id="sltMedium"  onchange="clickMedium">asf</select>
       <select id="sltSmall" onchange="clickSmall"></select>
     </div>
   </main>
+  <footer>
+    <div class="btnGroup">
+      <button>종합대학 전공별 경쟁률 그래프</button>
+      <button>전문대학 전공별 경쟁률 그래프</button>
+      <button>종합대학 전공별 성별 비율 그래프</button>
+      <button>전문대학 전공별 성별 비율 그래프</button>
+    </div>
+  </footer>
+  <style>
+    canvas{
+    }
+    footer{
+    }
+    .btnGroup{
+      display: flex;
+      justify-content: space-around;
+    }
+    #selectbox{
+      display: flex;
+      justify-content: space-around;
+    }
+  </style>
 
   <script type='text/javascript'>
 
