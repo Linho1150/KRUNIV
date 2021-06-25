@@ -11,3 +11,48 @@ main{
   padding-right: 15%;
   padding-left: 15%;
 }
+.navbar{
+  height: 50px;
+  font-size: 20pt;
+  background-color: #012967;
+  color: white;
+}
+.navbar p{
+  margin-left: 10pt;
+}
+.nav-group{
+  display: flex;
+  font-size: 12pt;
+}
+.nav-group a{
+  color: white;
+  margin-right: 10pt;
+  text-decoration: unset;
+}
+#selectbox{
+  display: flex;
+  justify-content: space-around;
+}
+select {
+  padding:1%;
+  border: 1px solid #999;
+  font-family: inherit;
+  border-radius: 0px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  }
+#btn{
+  background-color: white;
+  border-color: #012967;
+  color: #012967;
+  margin:auto;
+  display: block;
+  padding-right: 5%;
+  padding-left: 5%;
+  font-size: 13pt;
+}
+dialog p{
+  margin-bottom: 5%;
+  font-size: 13pt;
+}

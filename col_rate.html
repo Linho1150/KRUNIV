@@ -11,50 +11,37 @@
 
 </head>
 
-<body style="background:#F2ECE9;">
-  <nav style="background-color:#A6A3A1;">
-    <style>
-      .itembox{
-        display: flex;
-      }
-    </style>
-    <a class="logo" href="#">KRuniv</a>
-    <ul class="itembox">
-        <li >
-          <a class="item" href="#">종합대학 경쟁률</a>
-        </li>
-        <li >
-          <a class="item" href="#">전문대학 경쟁률</a>
-        </li>
-        <li>
-          <a class="item" href="#">종합대학 남녀성비</a>
-        </li>
-        <li>
-          <a class="item" href="#">전문대학 남녀성비</a>
-        </li>
-    </ul>
-    <!--<select class="itembox_mid">
-          <option value="인문계열">종합대학 경쟁률</option>
-          <option value="인문계열">전문대학 경쟁률</option>
-          <option value="인문계열">종합대학 남녀성비</option>
-          <option value="인문계열">전문대학 남녀성비</option>
-    </select>-->
+<body>
+  <nav class="navbar">
+    <p>KRuniv</p>
+    <div>
+      <div class="nav-group">
+        <a href="univ_rate.html">종합대학 전공별 경쟁률</a>
+        <a href="univ_gender.html">종합대학 전공별 성별 비율</a>
+        <a href="col_rate.html">전문대학 전공별 경쟁률</a>
+        <a href="col_gender.html">전문대학 전공별 성별 비율</a>
+      </div>
     </div>
   </nav>
 
   <main role="main">
-    <h3 style="text-align: center; color:#595857;">종합대학 경쟁률 그래프</h3>
+    <h3 style="text-align: center; color:#595857;">전문대학 전공별 경쟁률 그래프</h3>
     <canvas id="canvas" style="min-width:200px;"></canvas>
 
     <br>
     <div id="selectbox">
-      <select id="sltLarge" onchange="clickLarge"></select>
-      <select id="sltMedium" onchange="clickMedium"></select>
-      <select id="sltSmall" onchange="clickSmall"></select>
+      <select id="sltLarge" onchange="clickLarge"><option value="" disabled selected>대분류</option></select>
+      <select id="sltMedium" onchange="clickMedium" disabled><option value="" disabled selected>중분류</option></select>
+      <select id="sltSmall" onchange="clickSmall" disabled><option value="" disabled selected>소분류</option></select>
     </div>
   </main>
 
+  <dialog id="Dialog"> <h2>사용방법</h2><p>▷ 대분류 , 중분류, 소분류 순으로 원하는 전공명을 클릭하면, 그래프를 통해 해당년도 경쟁률을 확인할 수 있습니다.<br>▷ 기간은 2011년 부터 2019년까지 확인가능합니다.<br>▷ 상단 범례를 클릭하면 그래프를 삭제할 수 있습니다.<br>▷ 정보가 없는 전공은 공백으로 나타납니다.</p><input type="button" id="btn" onclick="closeDialog()" value=" 확인 " > </dialog>
+
   <script type='text/javascript'>
+    showDialog();
+    function showDialog(){var dialog = document.getElementById("Dialog"); dialog.showModal(); }
+    function closeDialog(){var dialog = document.getElementById("Dialog"); dialog.close(); }
 
     // 초기 그래프 설정 =========================================================
     var ctx = document.getElementById('canvas');
@@ -111,7 +98,7 @@
     function loadJSON(callback) {   
       var xobj = new XMLHttpRequest();
           xobj.overrideMimeType("application/json");
-      xobj.open('GET', 'col_total.json', true);
+      xobj.open('GET', 'json/col_total.json', true);
       xobj.onreadystatechange = function () {
             if (xobj.readyState == 4 && xobj.status == "200") {
               callback(xobj.responseText);
@@ -187,6 +174,7 @@
       var cntMedium = document.getElementById('sltMedium');
       cntMedium.innerHTML="";
       getItem('sltMedium',rstMedium[cntLarge.selectedIndex]);
+      cntMedium.removeAttribute("disabled");
     };
 
     function clickMedium(){
@@ -195,6 +183,8 @@
       var cntSmall = document.getElementById('sltSmall');
       cntSmall.innerHTML="";
       getItem('sltSmall',rstSmall[cntLarge.selectedIndex][cntMedium.selectedIndex]);
+      cntSmall.removeAttribute("disabled");
+
     };
 
     function clickSmall(){
