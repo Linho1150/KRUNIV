@@ -33,6 +33,15 @@ main{
   display: flex;
   justify-content: space-around;
 }
+select {
+  padding:1%;
+  border: 1px solid #999;
+  font-family: inherit;
+  border-radius: 0px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  }
 #btn{
   background-color: white;
   border-color: #012967;

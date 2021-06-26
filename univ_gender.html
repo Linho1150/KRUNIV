@@ -16,8 +16,8 @@
     <p>KRuniv</p>
     <div>
       <div class="nav-group">
-        <a href="univ_rate.html">종합대학 전공별 경쟁률</a>
-        <a href="univ_gender.html">종합대학 전공별 성별 비율</a>
+        <a href="index.html">종합대학 전공별 경쟁률</a>
+        <a href="univ_gender.html" style="text-decoration: underline;">종합대학 전공별 성별 비율</a>
         <a href="col_rate.html">전문대학 전공별 경쟁률</a>
         <a href="col_gender.html">전문대학 전공별 성별 비율</a>
       </div>
@@ -30,13 +30,14 @@
 
     <br>
     <div id="selectbox">
-      <select id="sltLarge" onchange="clickLarge"><option value="" disabled selected>대분류</option></select>
-      <select id="sltMedium" onchange="clickMedium" disabled><option value="" disabled selected>중분류</option></select>
-      <select id="sltSmall" onchange="clickSmall" disabled><option value="" disabled selected>소분류</option></select>
+      <select id="sltLarge" onchange="clickLarge"></select>
+      <select id="sltMedium" onchange="clickMedium" disabled></select>
+      <select id="sltSmall" onchange="clickSmall" disabled></select>
     </div>
   </main>
 
   <dialog id="Dialog"> <h2>사용방법</h2><p>▷ 대분류 , 중분류, 소분류 순으로 원하는 전공명을 클릭하면, 그래프를 통해 해당년도 경쟁률을 확인할 수 있습니다.<br>▷ 기간은 2011년 부터 2019년까지 확인가능합니다.<br>▷ 상단 범례를 클릭하면 그래프를 삭제할 수 있습니다.<br>▷ 정보가 없는 전공은 공백으로 나타납니다.</p><input type="button" id="btn" onclick="closeDialog()" value=" 확인 " > </dialog>
+  <p style="text-align: center;">© 2021 KRuniv &lt;linho301150@gmail.com&gt;</p>
 
   <script type='text/javascript'>
     showDialog();
